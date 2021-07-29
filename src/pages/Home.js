@@ -31,13 +31,16 @@ return (
   
     <Button onPress={ handleAddNewSkill } />
 
-    <Text style={[styles.title, { marginTop: 20 }]}>Minhas habilidades</Text>
+    <Text style={[styles.title, { marginVertical: 40, marginBottom: 30 }]}>Minhas habilidades</Text>
 
-  {
-    mySkills.map(skill => (
-      <SkillCard key={ skill } skill={ skill }/>
-    ))
-  }
+    <FlatList
+    showsVerticalScrollIndicator={false}
+    data={ mySkills }
+    keyExtractor={item => item}
+    renderItem={({ item }) => (
+      <SkillCard skill={ item } />
+    )}
+    />
 
   </View>
 )  
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
   {
     backgroundColor: '#353535',
     color: '#fff',
-    fontSize: 16,
+    fontSize: 18,
     padding: 10,
     marginTop: 15,
     borderRadius: 5

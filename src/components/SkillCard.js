@@ -21,12 +21,12 @@ buttonSkill:
   backgroundColor: '#353535',
   padding: 10,
   marginTop: 10, 
-  borderRadius: 10,
+  borderRadius: 25,
   alignItems: 'center'
 },
 textSkill: 
 {
-  fontSize: 16,
+  fontSize: 18,
   color: '#fff'
 }
 });
