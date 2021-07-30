@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { 
+import {
   View,
   Text,
   StyleSheet,
@@ -10,68 +10,65 @@ import {
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
-export function Home(){
+export function Home() {
   const [newSkill, setNewSkill] = useState('');
   const [mySkills, setMySkills] = useState([]);
   const [greeting, setGreetting] = useState('');
 
-  function handleAddNewSkill()
-  {
+  function handleAddNewSkill() {
     setMySkills(oldState => [...oldState, newSkill]);
   }
 
   useEffect(() => {
     const currentHour = new Date().getHours();
-    
+
     if (currentHour < 12) {
       setGreetting('Bom dia!');
     }
     else if (currentHour >= 12 && currentHour < 18) {
       setGreetting('Boa tarde!');
     }
-    else
-    {
+    else {
       setGreetting('Boa noite!');
     }
   }, [mySkills])
 
-return (
-  <View style={ styles.container }>
-    <Text style={ styles.title }>Olá, João</Text>
+  return (
+    <View style={styles.container}>
 
-    <Text style={[styles.greetings, {marginTop: 10, marginBottom: 5}]}>
-      { greeting }
-    </Text>
+      <Text style={styles.title}>Olá, João</Text>
 
-    <TextInput style={ styles.input } 
-      placeholder="Nova habilidade" 
-      placeholderTextColor="#999"
-      onChangeText={ setNewSkill } 
-    />
-  
-    <Button onPress={ handleAddNewSkill } />
+      <Text style={[styles.greetings, { marginTop: 10, marginBottom: 5 }]}>
+        {greeting}
+      </Text>
 
-    <Text style={[styles.title, { marginVertical: 40, marginBottom: 30 }]}>
-      Minhas habilidades
-    </Text>
+      <TextInput style={styles.input}
+        placeholder="Nova habilidade"
+        placeholderTextColor="#999"
+        onChangeText={setNewSkill}
+      />
 
-    
+      <Button onPress={handleAddNewSkill} />
 
-    <FlatList
-    showsVerticalScrollIndicator={false}
-    data={ mySkills }
-    keyExtractor={item => item}
-    renderItem={({ item }) => (
-      <SkillCard skill={ item } />
-    )}
-    />
+      <Text style={[styles.title, { marginVertical: 40, marginBottom: 30 }]}>
+        Minhas habilidades
+      </Text>
 
-  </View>
-)  
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={mySkills}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <SkillCard skill={item} />
+        )}
+      />
+
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  container: 
+  container:
   {
     flex: 1,
     paddingHorizontal: 40,
