@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 interface ButtonProps extends TouchableOpacityProps {
-  title: string
+  title: string;
 }
 
 export function Button({ title, ...rest }: ButtonProps) {
